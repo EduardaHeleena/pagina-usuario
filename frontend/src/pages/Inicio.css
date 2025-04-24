@@ -1,0 +1,231 @@
+
+.pagina-inicio {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #c3dafe, #ebf4ff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.menu-inicio {
+  width: 260px;
+  background-color: #fff;
+  padding: 20px;
+  border-right: 1px solid #e2e8f0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+
+.menu-inicio ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-inicio li {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  font-weight: bold;
+  color: #2d3748;
+  border-radius: 8px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.menu-inicio li:hover {
+  background-color: #edf2f7;
+}
+
+.menu-inicio li span {
+  margin-left: 10px;
+}
+
+.menu-inicio li a {
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-inicio li a:visited {
+  color: inherit;
+}
+
+
+.conteudo-inicio {
+  flex: 1;
+  padding: 30px;
+}
+
+
+.perfil {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.perfil-info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.perfil-info span {
+  color: #4a5568;
+}
+
+.perfil button {
+  background-color: #3182ce;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+
+.ultimas-faturas h3 {
+  background-color: #90cdf4;
+  color: #1a202c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+.fatura-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.fatura-card span {
+  display: block;
+  color: #4a5568;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.foto-perfil {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.perfil-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.perfil-nome {
+  display: flex;
+  flex-direction: column;
+}
+
+.perfil-nome h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.perfil-nome span {
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
+.modal-perfil {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-conteudo {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-conteudo h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.modal-conteudo label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.modal-conteudo input[type="text"],
+.modal-conteudo input[type="file"] {
+  width: 100%;
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.modal-botoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modal-botoes button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-botoes button:first-child {
+  background-color: #2d8cff;
+  color: white;
+}
+
+.modal-botoes button:last-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+.menu-inicio ul li .btn-sair {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  padding: 10px 0;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-inicio ul li .btn-sair:hover {
+  background-color: #ffffff22;
+}

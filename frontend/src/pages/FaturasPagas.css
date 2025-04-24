@@ -1,0 +1,160 @@
+.faturas-page {
+    padding: 2rem 1rem 2rem 1rem;
+    background: linear-gradient(to bottom right, #cce0ff, #e6f0ff);
+    min-height: 100vh;
+    position: relative;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .faturas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .header-esquerda {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .header-icone {
+    font-size: 1.5rem;
+  }
+  
+  .btn-voltar {
+    background-color: white;
+    color: #1976d2;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-voltar:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .btn-menu {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .lista-faturas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .fatura-card {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .fatura-card:hover {
+    background-color: #f4f9ff;
+    transform: scale(1.01);
+  }
+  
+  .fatura-card.ativo {
+    border: 2px solid #1976d2;
+  }
+  
+  .fatura-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .fatura-detalhes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .status.pago {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .fatura-extra {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  /* 🔒 Estilo do menu lateral específico desta página */
+  .menu-lateral {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 230px;
+    background-color: #ffffff;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1000;
+  }
+  
+  .menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-lateral li {
+    margin: 1rem 0;
+  }
+  
+  .menu-lateral a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .menu-lateral a:hover {
+    color: #1976d2;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .faturas-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .menu-lateral {
+      width: 200px;
+      top: 60px;
+    }
+  
+    .fatura-info,
+    .fatura-detalhes {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+  }
+  
