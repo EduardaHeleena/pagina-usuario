@@ -22,7 +22,7 @@ def criar_tabela_nota_fiscal():
 
         cursor = conn.cursor()
 
-        # ⚠️ Importante: força collation manualmente
+       
         cursor.execute("SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci';")
 
         cursor.execute("""
