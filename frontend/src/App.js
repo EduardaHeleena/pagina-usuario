@@ -5,6 +5,8 @@ import Inicio from "./pages/Inicio";
 import FaturasPagas from "./pages/FaturasPagas";
 import FaturasAbertas from "./pages/FaturasAbertas";
 import FaturasAtraso from "./pages/FaturasAtraso";
+import NotaFiscal from "./pages/NotasFiscais";
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path="/faturas-pagas/:clienteId" element={<FaturasPagas />} />
         <Route path="/faturas-abertas/:clienteId" element={<FaturasAbertas />} />
         <Route path="/faturas-atraso/:clienteId" element={<FaturasAtraso />} />
+        <Route path="/nota-fiscal" element={<NotaFiscal />} /> 
       </Routes>
     </AuthProvider>
   );

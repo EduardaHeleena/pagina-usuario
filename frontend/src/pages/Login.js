@@ -13,7 +13,7 @@ const Login = () => {
     setErro(null);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_AUTH_URL}/login`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha }),

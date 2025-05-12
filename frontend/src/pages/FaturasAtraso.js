@@ -29,7 +29,7 @@ const FaturasAtraso = () => {
       query.append("page", paginaAtual);
       query.append("limit", limitePorPagina);
 
-      const response = await fetch(`${process.env.REACT_APP_FATURA_URL}/faturas-atraso/${user.id}?${query.toString()}`);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/faturas-atraso/${user.id}?${query.toString()}`);
       if (!response.ok) throw new Error("Erro ao buscar faturas em atraso.");
       const data = await response.json();
       setFaturas(data.faturas);

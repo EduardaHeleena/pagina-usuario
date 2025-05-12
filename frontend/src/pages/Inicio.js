@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "./Inicio.css";
@@ -7,7 +7,7 @@ const Inicio = () => {
   const { user, setUser, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [nome, setNome] = useState(user?.nome || "nome de usuário");
-  const [fotoPerfil, setFotoPerfil] = useState(user?.foto_perfil ? `${process.env.REACT_APP_FILE_URL}/${user.foto_perfil}` : null);
+  const [fotoPerfil, setFotoPerfil] = useState(user?.foto_perfil);
   const [arquivoFoto, setArquivoFoto] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
 
@@ -17,45 +17,63 @@ const Inicio = () => {
     { id: 3, texto: "Nova fatura emitida para Maio.", icone: "📄", tempo: "2 horas atrás" },
   ];
 
+  // Função para lidar com mudanças na foto de perfil
   const handleFotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setArquivoFoto(file);
-      setFotoPerfil(URL.createObjectURL(file));
+      setFotoPerfil(URL.createObjectURL(file)); // Mostra a foto temporariamente
     }
   };
 
+   // Função para converter a foto para base64
+   const converterParaBase64 = (foto) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(foto);
+    });
+  };
+
+  // Função para salvar as alterações no perfil
   const salvarPerfil = async () => {
-    const formData = new FormData();
-    formData.append("id", user.id);
-    formData.append("nome", nome);
-    if (arquivoFoto) formData.append("foto", arquivoFoto);
-
+    const formData = {
+      id: user.id,
+      nome,
+      foto: arquivoFoto ? await converterParaBase64(arquivoFoto) : null
+    };
+  
     try {
-      const response = await fetch(`${process.env.REACT_APP_AUTH_URL}/usuario/perfil`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/profile`, {
         method: "PUT",
-        body: formData
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-
+  
       if (!response.ok) throw new Error("Erro ao atualizar perfil.");
       const result = await response.json();
-
-      const novoUsuario = {
-        ...user,
-        nome: nome,
-        foto_perfil: result.foto_perfil || user.foto_perfil
-      };
-      setUser(novoUsuario);
-      localStorage.setItem("user", JSON.stringify(novoUsuario));
-      if (result.foto_perfil) {
-        setFotoPerfil(`${process.env.REACT_APP_FILE_URL}/${result.foto_perfil}`);
-      }
-
-      setMostrarModal(false);
+  
+      // Atualiza o estado do usuário com as novas informações
+      setUser(prevUser => ({
+        ...prevUser,
+        nome,
+        foto_perfil: result.foto_perfil || prevUser.foto_perfil
+      }));
+  
+      localStorage.setItem("user", JSON.stringify(user));
+      setMostrarModal(false); // Fecha o modal após salvar
     } catch (error) {
       console.error("Erro ao salvar perfil:", error);
     }
   };
+
+  // Usado para carregar a imagem do perfil
+  useEffect(() => {
+    if (user?.foto_perfil) {
+      setFotoPerfil(user.foto_perfil);
+    }
+  }, [user]);
 
   return (
     <div className="pagina-inicio">
@@ -65,7 +83,7 @@ const Inicio = () => {
           <li onClick={() => navigate(`/faturas-pagas/${user?.id}`)}>💰 Faturas Pagas</li>
           <li onClick={() => navigate(`/faturas-abertas/${user?.id}`)}>📄 Faturas à Vencer</li>
           <li onClick={() => navigate(`/faturas-atraso/${user?.id}`)}>⏳ Faturas em Atraso</li>
-          <li>🧾 Notas Fiscais</li>
+          <li onClick={() => navigate("/nota-fiscal")}>🧾 Notas Fiscais</li>
           <li>⚙️ Configurações</li>
           <li><button onClick={logout} className="btn-sair">🚪 Sair</button></li>
         </ul>

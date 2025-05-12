@@ -51,7 +51,7 @@ const FaturasPagas = () => {
       query.append("page", paginaAtual);
       query.append("limit", limitePorPagina);
 
-      const response = await fetch(`${process.env.REACT_APP_FATURA_URL}/faturas-pagas/${user.id}?${query.toString()}`);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/faturas-pagas/${user.id}?${query.toString()}`);
       if (!response.ok) throw new Error("Erro ao buscar faturas pagas.");
       const data = await response.json();
       setFaturas(data.faturas);
@@ -166,7 +166,8 @@ const FaturasPagas = () => {
                 </div>
                 {cardAtivo === fatura.numero_fatura && (
                   <div className="fatura-extra">
-                    {fatura.boleto_url && <a href={fatura.boleto_url} target="_blank" rel="noreferrer" className="botao-link">Ver Boleto</a>}
+                   <a
+                      href={`${process.env.REACT_APP_BACKEND_URL}/boleto/${fatura.numero_fatura}/visualizar`} target="_blank" rel="noreferrer" className="botao-link" > Ver Boleto </a>
                     {fatura.nota_fiscal_url && <a href={fatura.nota_fiscal_url} target="_blank" rel="noreferrer" className="botao-link">Ver Nota Fiscal</a>}
                   </div>
                 )}
