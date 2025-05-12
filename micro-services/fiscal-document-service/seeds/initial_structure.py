@@ -44,7 +44,9 @@ def criar_tabela_nota_fiscal():
             pis DECIMAL(10,2),
             cofins DECIMAL(10,2),
             valor_liquido DECIMAL(10,2),
-            FOREIGN KEY (id) REFERENCES invoices(id) ON DELETE CASCADE
+            FOREIGN KEY (id) REFERENCES invoices(id) ON DELETE CASCADE,
+            FOREIGN KEY (id) REFERENCES invoices(id) ON DELETE CASCADE,
+            CONSTRAINT fk_invoice_number FOREIGN KEY (invoice_number) REFERENCES invoices(invoice_number)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
         """)
 
